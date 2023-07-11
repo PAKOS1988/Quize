@@ -41,7 +41,7 @@ class Raiting(db.Model):
     __tablename__ = 'raiting'
     id= db.Column(db.Integer, primary_key = True, autoincrement = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user_correct_answer = db.Column(db.Integer, default = 0)
+    user_correct_answers = db.Column(db.Integer, default = 0)
     level = db.Column(db.String)
 
     user_fk = db.relationship(User)
