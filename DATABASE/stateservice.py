@@ -25,8 +25,8 @@ def add_user_raiting_db(user_id, correct_answers, level):
     db.session.commit()
 
 #Получение позиции пользователя в топе
-def get_user_position(user_id, level, correct_answer):
-    register_user_rating = add_user_raiting_db(user_id,correct_answer,level)
+def get_user_position(user_id, correct_answers, level):
+    register_user_rating = add_user_raiting_db(user_id,correct_answers,level)
     user_position = Raiting.query.order_by(Raiting.user_correct_answers.desc()).filter_by(level=level)
     user_ids = [i.user_id for i in user_position]
     return user_ids.index(user_id)+1

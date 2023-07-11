@@ -12,7 +12,7 @@ class Questions(BaseModel):
     questions: List[Dict]
 
 #Запрос на получение всех вопросов
-@test_bp.route('/get-question/<string:level>', methods=['GET'])
+@test_bp.route('/get-questions/<string:level>', methods=['GET'])
 def get_user_questions(level:str)-> Questions.json:
     #Обращение к базе вопросов
     questions = get_questions_db(level)
@@ -43,7 +43,7 @@ def check_current_user_answer(question_id:int, user_answer:str)-> Dict[str, int]
 
 #Запрос на вывод результата
 @test_bp.route('/done/<int:user_id>/<int:correct_answers>/<string:level>', methods=['POST'])
-def user_done_test(user_id:int, correct_answer:int, level:str)->Dict[str, int]:
-    user_position = get_user_position(user_id,level,correct_answer)
-    return {'status':1, 'correct_answers':correct_answer, 'position_on_top':user_position}
+def user_done_test(user_id:int, correct_answers:int, level:str)->Dict[str, int]:
+    user_position = get_user_position(user_id,level,correct_answers)
+    return {'status':1, 'correct_answers':correct_answers, 'position_on_top':user_position}
 

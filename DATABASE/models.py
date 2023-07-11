@@ -38,7 +38,7 @@ class Result(db.Model):
     question_fk = db.relationship(Question)
 
 class Raiting(db.Model):
-    __tablename__ = 'raiting'
+    __tablename__ = 'ratings'
     id= db.Column(db.Integer, primary_key = True, autoincrement = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user_correct_answers = db.Column(db.Integer, default = 0)
